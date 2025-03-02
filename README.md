@@ -13,12 +13,12 @@ Rena è una piattaforma online che offre diversi servizi gratuiti per gli utenti
 
 Rena si impegna a offrire servizi sicuri, open source e accessibili a tutti. Puoi contribuire al progetto su GitHub o esplorare i servizi offerti direttamente dal nostro sito.  
 
--  **Leggi la nostra Privacy Policy**: [rena.altervista.org/privacy.html](https://rena.altervista.org/privacy-policy.html)  
--  **Scopri chi siamo**: [rena.altervista.org/about.html](https://rena.altervista.org/chi-siamo.html)  
+-  **Leggi la nostra Privacy Policy**: [rena.altervista.org/privacy-policy.html](https://rena.altervista.org/privacy-policy.html)  
+-  **Scopri chi siamo**: [rena.altervista.org/chi-siamo.html](https://rena.altervista.org/chi-siamo.html)  
 
 ### Supportaci su Ko-fi  
 Se ti piacciono i nostri servizi e vuoi aiutarci a mantenerli online, puoi offrirci un caffè su Ko-fi! ☕  
-[Supporta Rena su Ko-fi](https://ko-fi.com/renaproject)  
+[Supporta Rena su Ko-fi](https://ko-fi.com/renaofficialtech)  
 
 # Vedi tutto il sito su [rena.altervista.org](https://rena.altervista.org)   
 
@@ -37,11 +37,11 @@ Rena is an online platform offering various free services for web users. Through
 
 Rena is committed to providing secure, open-source, and accessible services for everyone. You can contribute to the project on GitHub or explore the services directly from our website.  
 
--  **Read our Privacy Policy**: [rena.altervista.org/privacy.html](https://rena.altervista.org/privacy-policy.html)  
--  **Learn more about us**: [rena.altervista.org/about.html](https://rena.altervista.org/chi-siamo.html)  
+-  **Read our Privacy Policy**: [rena.altervista.org/privacy-policy.html](https://rena.altervista.org/privacy-policy.html)  
+-  **Learn more about us**: [rena.altervista.org/chi-siamo.html](https://rena.altervista.org/chi-siamo.html)  
 
 ###  Support us on Ko-fi  
 If you like our services and want to help us keep them online, you can buy us a coffee on Ko-fi! ☕  
-[Support Rena on Ko-fi](https://ko-fi.com/renaproject)  
+[Support Rena on Ko-fi](https://ko-fi.com/renaofficialtech)  
 
 # See the entire site at [rena.altervista.org](https://rena.altervista.org)    
