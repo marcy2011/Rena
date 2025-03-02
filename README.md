@@ -18,7 +18,7 @@ Rena si impegna a offrire servizi sicuri, open source e accessibili a tutti. Puo
 
 ### Supportaci su Ko-fi  
 Se ti piacciono i nostri servizi e vuoi aiutarci a mantenerli online, puoi offrirci un caffè su Ko-fi! ☕  
-[Supporta Rena su Ko-fi](https://ko-fi.com/renaofficialtech)  
+[Supporta Rena su Ko-fi](https://ko-fi.com/renatechnology)  
 
 # Vedi tutto il sito su [rena.altervista.org](https://rena.altervista.org)   
 
@@ -42,6 +42,6 @@ Rena is committed to providing secure, open-source, and accessible services for 
 
 ###  Support us on Ko-fi  
 If you like our services and want to help us keep them online, you can buy us a coffee on Ko-fi! ☕  
-[Support Rena on Ko-fi](https://ko-fi.com/renaofficialtech)  
+[Support Rena on Ko-fi](https://ko-fi.com/renatechnology)  
 
 # See the entire site at [rena.altervista.org](https://rena.altervista.org)    
