@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://rena.altervista.org/logo.png" alt="logo" width="90" style="border-radius: 20px;">
+</p>
+
 # Rena
 
 <img src="https://renaarcade.altervista.org/flagit.png" alt="IT" width="50">
