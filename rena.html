@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -375,8 +376,6 @@
 </head>
 
 <body>
-  <img id="lingua" src="https://renadeveloper.altervista.org/bandierait.png" alt="Lingua"
-    data-alt-src="https://renadeveloper.altervista.org/bandieraen.png">
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var languagePopup = document.getElementById('language-popup');
@@ -438,108 +437,32 @@
       customMenu.style.display = 'none';
     });
   </script>
-  <style>
-    #lingua {
-      cursor: pointer;
-      width: 30px;
-      position: absolute;
-      top: 20px;
-      right: 57px;
-      transform: translateX(50%);
-      border-radius: 20px;
-      z-index: 200;
-    }
-
-    @media screen and (max-width: 600px) {
-      #lingua {
-        margin-top: 30px;
-        right: 50%;
-      }
-    }
-  </style>
-  <div id="language-popup" class="language-popup">
-    <span id="close-popup" class="close-popup">×</span>
-    <button class="language-btn" data-lang="it">Italiano</button>
-    <button class="language-btn" data-lang="en">English</button>
-  </div>
-  <style>
-    .language-popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-      z-index: 1000;
-      text-align: center;
-    }
-
-    .language-btn {
-      margin: 20px;
-      padding: 10px 20px;
-      background-color: #ffffff;
-      color: black;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .language-popup .language-btn {
-      margin: 20px auto;
-      padding: 10px 20px;
-      background-color: #ffffff;
-      color: black;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      display: block;
-    }
-
-    .language-btn:hover {
-      background-color: black;
-      color: white;
-    }
-
-    .close-popup {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
   <div id="custom-menu">
     <ul>
       <li><a href="https://rena.altervista.org"><img src="https://gcsapp.altervista.org/homebanner.png" alt="Image 1"
-              width="20"><span>Home</span></a></li>
+            width="20"><span>Home</span></a></li>
       <li><a href="https://rena.altervista.org/privacy-policy.html" class="has-svg">
-            <svg class="custom-menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <span>Privacy Policy</span>
-          </a></li>
+          <svg class="custom-menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span>Privacy Policy</span>
+        </a></li>
       <li><a href="https://rena.altervista.org/chi-siamo.html" class="has-svg">
-                        <svg class="custom-menu-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" fill="#ffffff" stroke="#ffffff">
-              <g>
-                <path class="st0"
-                  d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z">
-                </path>
-                <path class="st0"
-                  d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z">
+          <svg class="custom-menu-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" fill="#ffffff" stroke="#ffffff">
+            <g>
+              <path class="st0"
+                d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z">
+              </path>
+              <path class="st0"
+                d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z">
               </path>
             </g>
           </svg>
-            <span data-translate-it="Chi Siamo" data-translate-en="About Us">Chi Siamo</span>
-          </a></li>
+          <span data-translate-it="Chi Siamo" data-translate-en="About Us">Chi Siamo</span>
+        </a></li>
     </ul>
   </div>
   <style>
@@ -666,7 +589,8 @@
         <h2 class="glow-text" data-translate-it="News" data-translate data-translate-en="News">News</h2>
         <div class="support-grid">
           <a href="https://renanews.altervista.org" class="feature-card floating-element support-card">
-            <div class="support-icon" style="background-color: black; border-radius: 20px; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
+            <div class="support-icon"
+              style="background-color: black; border-radius: 20px; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
               <img src="https://rena.altervista.org/renanews-logo.png" alt="Rena News Logo"
                 style="width: 100px; height: 100px; border-radius: 20px; object-fit: contain;">
             </div>
@@ -674,7 +598,8 @@
               <h3 class="glow-text" data-translate-it="Rena News" data-translate data-translate-en="Rena News">
                 Rena News</h3>
               <p data-translate-it="Resta aggiornato 24h su 24h sulle notizie inerenti Rena!" data-translate
-                data-translate-en="Stay updated 24/7 on all Rena-related news!">Resta aggiornato 24h su 24h sulle notizie inerenti Rena!</p>
+                data-translate-en="Stay updated 24/7 on all Rena-related news!">Resta aggiornato 24h su 24h sulle
+                notizie inerenti Rena!</p>
             </div>
           </a>
         </div>
@@ -757,8 +682,8 @@
                 <svg class="social-icon" viewBox="0 0 24 24">
                   <path fill="currentColor"
                     d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-              </path>
-            </svg>
+                  </path>
+                </svg>
               </div>
               <span>Telegram</span>
             </a>
@@ -980,15 +905,22 @@
     <div class="footer-buttons">
       <a href="https://rena.altervista.org/privacy-policy.html" class="footer-button">
         <svg class="footer-button-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+            stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
         <span>Privacy Policy</span>
       </a>
       <a href="https://rena.altervista.org/chi-siamo.html" class="footer-button">
-        <svg class="footer-button-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" fill="#ffffff" stroke="#ffffff">
+        <svg class="footer-button-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" fill="#ffffff" stroke="#ffffff">
           <g>
-            <path class="st0" d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z"></path>
-            <path class="st0" d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z"></path>
+            <path class="st0"
+              d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z">
+            </path>
+            <path class="st0"
+              d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z">
+            </path>
           </g>
         </svg>
         <span data-translate-it="Chi Siamo" data-translate-en="About Us">Chi Siamo</span>
@@ -1050,7 +982,7 @@
         flex-direction: column;
         align-items: center;
       }
-      
+
       .footer-button {
         width: 100%;
         justify-content: center;
@@ -1091,5 +1023,355 @@
 
     document.addEventListener('DOMContentLoaded', loadSavedLanguage);
   </script>
-</body>
+
+  <style>
+    .profile-menu-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .default-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .profile-menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 15px;
+      width: 200px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-menu.active {
+      display: block;
+    }
+
+    .profile-menu-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-bottom: 5px;
+    }
+
+    .profile-menu-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .profile-menu-item i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .profile-menu-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 10px 0;
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .language-option.active {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .language-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      margin-right: 10px;
+      border-radius: 3px;
+    }
+
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      stroke: #4ade80;
+      stroke-width: 2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .language-option.active .check-icon {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .profile-menu-container {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .profile-menu {
+        left: 50% !important;
+        right: auto;
+        transform: translateX(-50%) !important;
+      }
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  </style>
+
+  <body>
+    <div class="profile-menu-container">
+      <div id="profile-button">
+      </div>
+      <div class="profile-menu" id="profile-menu">
+        <a href="account.php" class="profile-menu-item">
+          <i class="fas fa-user"></i>
+          <span data-translate-it="Il mio account" data-translate-en="My Account">Il mio account</span>
+        </a>
+        <div class="profile-menu-divider"></div>
+        <div class="profile-menu-item" style="pointer-events: none; opacity: 0.8;">
+          <i class="fas fa-language"></i>
+          <span data-translate-it="Lingua" data-translate-en="Language">Lingua</span>
+        </div>
+        <div class="language-option" data-lang="it" onclick="translatePage('it')">
+          <div class="language-content">
+            <img src="https://renadeveloper.altervista.org/bandierait.png" class="language-flag" alt="Italiano">
+            <span>Italiano</span>
+          </div>
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <div class="language-option" data-lang="en" onclick="translatePage('en')">
+          <div class="language-content">
+            <img src="https://renadeveloper.altervista.org/bandieraen.png" class="language-flag" alt="English">
+            <span>English</span>
+          </div>
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const profileButton = document.getElementById('profile-button');
+        const profileMenu = document.getElementById('profile-menu');
+
+        checkLoginStatus();
+
+        loadSavedLanguage();
+
+        profileButton.addEventListener('click', function (e) {
+          e.stopPropagation();
+          profileMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function () {
+          profileMenu.classList.remove('active');
+        });
+
+        profileMenu.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      });
+
+      function checkLoginStatus() {
+        fetch('account.php?nocache=' + new Date().getTime(), {
+          method: 'GET',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+          },
+          cache: 'no-cache'
+        })
+          .then(response => response.text())
+          .then(text => {
+            try {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(text, 'text/html');
+
+              const username = doc.querySelector('.user-info h2')?.textContent.replace('Benvenuto, ', '').replace('Welcome, ', '').replace('!', '').trim();
+              const profilePhoto = doc.querySelector('.profile-photo')?.getAttribute('src');
+
+              updateProfileUI({
+                logged_in: true,
+                username: username,
+                profile_photo: profilePhoto
+              });
+            } catch (error) {
+              console.error('Errore nel parsing della risposta:', error);
+              showLoginUI();
+            }
+          })
+          .catch(error => {
+            console.error('Errore nel controllo login:', error);
+            showLoginUI();
+          });
+      }
+
+      function updateProfileUI(data) {
+        const profileButton = document.getElementById('profile-button');
+
+        if (data && data.logged_in === true && data.username && data.username.trim() !== '') {
+          if (data.profile_photo) {
+            const img = document.createElement('img');
+            img.className = 'profile-pic';
+            img.alt = 'Foto profilo';
+
+            img.onerror = function () {
+              const initial = data.username.charAt(0).toUpperCase();
+              profileButton.innerHTML = `<div class="default-avatar">${initial}</div>`;
+            };
+
+            img.onload = function () {
+              profileButton.innerHTML = '';
+              profileButton.appendChild(img);
+            };
+
+            img.src = data.profile_photo;
+
+          } else {
+            const initial = data.username.charAt(0).toUpperCase();
+            profileButton.innerHTML = `<div class="default-avatar">${initial}</div>`;
+          }
+
+          const span = document.querySelector('.profile-menu-item span');
+          if (span) {
+            span.setAttribute('data-translate-it', 'Il mio account');
+            span.setAttribute('data-translate-en', 'My Account');
+            span.textContent = 'Il mio account';
+          }
+
+        } else {
+          profileButton.innerHTML = `<div class="default-avatar"><i class="fas fa-user"></i></div>`;
+
+          const span = document.querySelector('.profile-menu-item span');
+          if (span) {
+            span.setAttribute('data-translate-it', 'Accedi');
+            span.setAttribute('data-translate-en', 'Login');
+            span.textContent = 'Accedi';
+          }
+        }
+      }
+
+
+
+      function showLoginUI() {
+        const profileButton = document.getElementById('profile-button');
+        profileButton.innerHTML = `<div class="default-avatar"><i class="fas fa-user"></i></div>`;
+      }
+
+      function translatePage(lang) {
+        localStorage.setItem('preferredLanguage', lang);
+
+        document.querySelectorAll('[data-translate-it]').forEach(function (el) {
+          if (lang === 'it') {
+            el.textContent = el.getAttribute('data-translate-it');
+          } else if (lang === 'en') {
+            el.textContent = el.getAttribute('data-translate-en');
+          }
+        });
+
+        updateLanguageIndicator(lang);
+
+        document.getElementById('profile-menu').classList.remove('active');
+      }
+
+      function updateLanguageIndicator(activeLang) {
+        document.querySelectorAll('.language-option').forEach(function (option) {
+          const lang = option.getAttribute('data-lang');
+          if (lang === activeLang) {
+            option.classList.add('active');
+          } else {
+            option.classList.remove('active');
+          }
+        });
+      }
+
+      function loadSavedLanguage() {
+        const savedLang = localStorage.getItem('preferredLanguage') || 'it';
+        translatePage(savedLang);
+      }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  </body>
+
 </html>
