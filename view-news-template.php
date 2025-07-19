@@ -495,22 +495,22 @@ if (isset($newsItem) && !empty($newsItem)) {
 
         .article-header {
             position: relative;
-            padding: 0; 
+            padding: 0;
         }
 
         .article-image {
             width: 100%;
-            height: 400px; 
+            height: 400px;
             overflow: hidden;
             position: relative;
-            margin: 0; 
+            margin: 0;
         }
 
         .article-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; 
-            display: block; 
+            object-fit: cover;
+            display: block;
         }
 
         .article-title {
@@ -518,11 +518,11 @@ if (isset($newsItem) && !empty($newsItem)) {
             color: white;
             font-weight: 600;
             margin: 20px 0;
-            padding: 0 2rem; 
+            padding: 0 2rem;
         }
 
         .article-content {
-            padding: 0 2rem 2rem; 
+            padding: 0 2rem 2rem;
             color: #cccccc;
             line-height: 1.8;
             font-size: 1.1rem;
@@ -568,21 +568,21 @@ if (isset($newsItem) && !empty($newsItem)) {
                 right: 20px;
                 z-index: 10;
             }
-            
+
             .container .share-button {
                 position: absolute;
                 top: 20px;
                 right: 20px;
             }
-            
+
             .article-header {
                 position: relative;
             }
-            
+
             .mobile-only {
                 display: none !important;
             }
-            
+
             .desktop-only {
                 display: flex !important;
             }
@@ -590,41 +590,42 @@ if (isset($newsItem) && !empty($newsItem)) {
 
         @media (max-width: 768px) {
             main {
-                margin-top: 4rem;
+                padding-top: 0px;
+                margin-top: 0;
             }
-            
+
             .article-container {
                 margin-bottom: 1rem;
                 border-radius: 25px;
             }
-            
+
             .article-image {
                 height: 250px;
             }
-            
+
             .article-title {
-                font-size: 2rem; 
-                margin: 10px 0; 
+                font-size: 2rem;
+                margin: 10px 0;
                 padding: 0 1rem;
             }
-            
+
             .article-content {
                 font-size: 1rem;
                 order: 3;
-                padding: 0 1rem 2rem; 
+                padding: 0 1rem 2rem;
             }
-            
+
             .share-button {
                 position: static;
                 width: calc(100% - 4rem);
                 margin: 1rem auto 3rem;
                 justify-content: center;
             }
-            
+
             .desktop-only {
                 display: none !important;
             }
-            
+
             .mobile-only {
                 display: flex !important;
             }
@@ -792,13 +793,16 @@ if (isset($newsItem) && !empty($newsItem)) {
             <article class="article-container">
                 <div class="article-header">
                     <div class="article-image">
-                        <img src="<?= htmlspecialchars($newsItem['cover']) ?>" alt="<?= htmlspecialchars($newsItem['title']) ?>">
+                        <img src="<?= htmlspecialchars($newsItem['cover']) ?>"
+                            alt="<?= htmlspecialchars($newsItem['title']) ?>">
                     </div>
                     <h1 class="article-title"><?= htmlspecialchars($newsItem['title']) ?></h1>
                     <button id="desktop-share-button" class="share-button desktop-only" onclick="shareArticle()">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                             <g id="SVGRepo_iconCarrier">
-                                <path d="M9.61109 12.4L10.8183 18.5355C11.0462 19.6939 12.6026 19.9244 13.1565 18.8818L19.0211 7.84263C19.248 7.41555 19.2006 6.94354 18.9737 6.58417M9.61109 12.4L5.22642 8.15534C4.41653 7.37131 4.97155 6 6.09877 6H17.9135C18.3758 6 18.7568 6.24061 18.9737 6.58417M9.61109 12.4L18.9737 6.58417M19.0555 6.53333L18.9737 6.58417" stroke="#ffffff" stroke-width="2"></path>
+                                <path
+                                    d="M9.61109 12.4L10.8183 18.5355C11.0462 19.6939 12.6026 19.9244 13.1565 18.8818L19.0211 7.84263C19.248 7.41555 19.2006 6.94354 18.9737 6.58417M9.61109 12.4L5.22642 8.15534C4.41653 7.37131 4.97155 6 6.09877 6H17.9135C18.3758 6 18.7568 6.24061 18.9737 6.58417M9.61109 12.4L18.9737 6.58417M19.0555 6.53333L18.9737 6.58417"
+                                    stroke="#ffffff" stroke-width="2"></path>
                             </g>
                         </svg>
                         <span data-translate-it="Condividi" data-translate-en="Share">Condividi</span>
@@ -808,217 +812,219 @@ if (isset($newsItem) && !empty($newsItem)) {
                     <p><?= nl2br(htmlspecialchars($newsItem['content'])) ?></p>
                 </div>
             </article>
-        
-        <button id="mobile-share-button" class="share-button mobile-only" onclick="shareArticle()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
-                <g id="SVGRepo_iconCarrier">
-                    <path d="M9.61109 12.4L10.8183 18.5355C11.0462 19.6939 12.6026 19.9244 13.1565 18.8818L19.0211 7.84263C19.248 7.41555 19.2006 6.94354 18.9737 6.58417M9.61109 12.4L5.22642 8.15534C4.41653 7.37131 4.97155 6 6.09877 6H17.9135C18.3758 6 18.7568 6.24061 18.9737 6.58417M9.61109 12.4L18.9737 6.58417M19.0555 6.53333L18.9737 6.58417" stroke="#ffffff" stroke-width="2"></path>
-                </g>
-            </svg>
-            <span data-translate-it="Condividi" data-translate-en="Share">Condividi</span>
-        </button>
-    </div>
-</main>
-<style>
-@media (min-width: 769px) {
-    .share-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 10;
-    }
-    
-    .container .share-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-    
-    .article-header {
-        position: relative;
-    }
-}
 
-@media (max-width: 768px) {
-    .share-button {
-        position: static;
-        width: calc(100% - 4rem);
-        margin: 1rem auto 3rem;
-        justify-content: center;
-    }
-}
+            <button id="mobile-share-button" class="share-button mobile-only" onclick="shareArticle()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M9.61109 12.4L10.8183 18.5355C11.0462 19.6939 12.6026 19.9244 13.1565 18.8818L19.0211 7.84263C19.248 7.41555 19.2006 6.94354 18.9737 6.58417M9.61109 12.4L5.22642 8.15534C4.41653 7.37131 4.97155 6 6.09877 6H17.9135C18.3758 6 18.7568 6.24061 18.9737 6.58417M9.61109 12.4L18.9737 6.58417M19.0555 6.53333L18.9737 6.58417"
+                            stroke="#ffffff" stroke-width="2"></path>
+                    </g>
+                </svg>
+                <span data-translate-it="Condividi" data-translate-en="Share">Condividi</span>
+            </button>
+        </div>
+    </main>
+    <style>
+        @media (min-width: 769px) {
+            .share-button {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 10;
+            }
 
-@media (min-width: 769px) {
-    .mobile-only {
-        display: none !important;
-    }
-    
-    .desktop-only {
-        display: flex !important;
-    }
-}
+            .container .share-button {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
 
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none !important;
-    }
-    
-    .mobile-only {
-        display: flex !important;
-    }
-}
-</style>
-<style>
-    .share-button {
-        display: flex;
-        align-items: center;
-        padding: 15px 25px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 15px;
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        gap: 10px;
-    }
+            .article-header {
+                position: relative;
+            }
+        }
 
-    .share-button:hover {
-        transform: translateY(-3px);
-        background: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
+        @media (max-width: 768px) {
+            .share-button {
+                position: static;
+                width: calc(100% - 4rem);
+                margin: 1rem auto 3rem;
+                justify-content: center;
+            }
+        }
 
-    .share-button svg {
-        width: 24px;
-        height: 24px;
-    }
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none !important;
+            }
 
-    .share-button span {
-        font-size: 16px;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-    }
+            .desktop-only {
+                display: flex !important;
+            }
+        }
 
-    @media (min-width: 769px) {
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none !important;
+            }
+
+            .mobile-only {
+                display: flex !important;
+            }
+        }
+    </style>
+    <style>
         .share-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-        }
-    }
-
-    @media (max-width: 768px) {
-        main {
-            margin-top: 4rem;
-        }
-        
-        .article-container {
-            margin-bottom: 1rem;
-            border-radius: 25px;
-        }
-        
-        .article-image {
-            height: 250px;
-        }
-        
-        .article-meta {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        
-        .article-content {
-            font-size: 1rem;
-        }
-        
-        .share-button {
-            position: static;
-            width: calc(100% - 4rem);
-            margin: 1rem auto 3rem;
-            justify-content: center;
-        }
-    }
-</style>
-<style>
-    .article-container {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 25px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        margin: 2rem auto;
-        max-width: 1000px;
-        position: relative;
-    }
-
-    .article-header {
-        position: relative;
-        padding: 0; 
-    }
-
-    .article-image {
-        width: 100%;
-        height: 400px; 
-        overflow: hidden;
-        position: relative;
-        margin: 0; 
-    }
-
-    .article-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-        display: block; 
-    }
-
-    .article-title {
-        font-size: 2.5rem;
-        color: white;
-        font-weight: 600;
-        margin: 20px 0;
-        padding: 0 2rem; 
-    }
-
-    .article-content {
-        padding: 0 2rem 2rem; 
-        color: #cccccc;
-        line-height: 1.8;
-        font-size: 1.1rem;
-    }
-
-    @media (max-width: 768px) {
-        main {
-            margin-top: 4rem;
-        }
-
-        .article-container {
-            margin-bottom: 0;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 10px;
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .share-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .share-button span {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        @media (min-width: 769px) {
+            .share-button {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 10;
+            }
+        }
+
+        @media (max-width: 768px) {
+            main {
+                margin-top: 4rem;
+            }
+
+            .article-container {
+                margin-bottom: 1rem;
+                border-radius: 25px;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .share-button {
+                position: static;
+                width: calc(100% - 4rem);
+                margin: 1rem auto 3rem;
+                justify-content: center;
+            }
+        }
+    </style>
+    <style>
+        .article-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem auto;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .article-header {
+            position: relative;
+            padding: 0;
         }
 
         .article-image {
-            height: 250px; 
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .article-title {
-            font-size: 2rem; 
-            margin: 10px 0; 
-            padding: 0 1rem;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 600;
+            margin: 20px 0;
+            padding: 0 2rem;
         }
 
         .article-content {
-            font-size: 1rem;
-            order: 3;
-            padding: 0 1rem 2rem; 
+            padding: 0 2rem 2rem;
+            color: #cccccc;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
-    }
-</style>
+
+        @media (max-width: 768px) {
+            main {
+                margin-top: 4rem;
+            }
+
+            .article-container {
+                margin-bottom: 0;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .article-title {
+                font-size: 2rem;
+                margin: 10px 0;
+                padding: 0 1rem;
+            }
+
+            .article-content {
+                font-size: 1rem;
+                order: 3;
+                padding: 0 1rem 2rem;
+            }
+        }
+    </style>
     <script>
         function shareArticle() {
             if (navigator.share) {
@@ -1026,7 +1032,7 @@ if (isset($newsItem) && !empty($newsItem)) {
                     title: document.querySelector('.article-title').textContent,
                     url: window.location.href
                 })
-                .catch(console.error);
+                    .catch(console.error);
             } else {
                 const dummy = document.createElement('input');
                 document.body.appendChild(dummy);
@@ -1038,5 +1044,218 @@ if (isset($newsItem) && !empty($newsItem)) {
             }
         }
     </script>
+    <script>
+        function translatePage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            document.cookie = `preferredLanguage=${lang}; path=/; max-age=${30 * 24 * 60 * 60}`;
+
+            const url = new URL(window.location.href);
+            url.searchParams.set('lang', lang);
+            window.location.href = url.toString();
+
+            document.querySelectorAll('[data-translate-it]').forEach(function (el) {
+                if (lang === 'it') {
+                    el.textContent = el.getAttribute('data-translate-it');
+                } else if (lang === 'en') {
+                    el.textContent = el.getAttribute('data-translate-en');
+                }
+            });
+
+            var titleElement = document.getElementById('page-title');
+            if (titleElement) {
+                if (lang === 'it') {
+                    titleElement.textContent = 'Rena - News';
+                } else if (lang === 'en') {
+                    titleElement.textContent = 'Rena - News';
+                }
+            }
+
+            updateLanguageIndicator(lang);
+        }
+
+        function updateLanguageIndicator(activeLang) {
+            document.querySelectorAll('.language-option').forEach(function (option) {
+                const lang = option.getAttribute('data-lang');
+                if (lang === activeLang) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+
+        function loadSavedLanguage() {
+            const cookieLang = document.cookie.split('; ').find(row => row.startsWith('preferredLanguage='))?.split('=')[1];
+            const savedLang = cookieLang || localStorage.getItem('preferredLanguage') || 'it';
+
+            updateLanguageIndicator(savedLang);
+            document.querySelectorAll('[data-translate-it]').forEach(function (el) {
+                if (savedLang === 'it') {
+                    el.textContent = el.getAttribute('data-translate-it');
+                } else if (savedLang === 'en') {
+                    el.textContent = el.getAttribute('data-translate-en');
+                }
+            });
+        }
+
+        function checkLoginStatus() {
+            fetch('account.php?nocache=' + new Date().getTime(), {
+                method: 'GET',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache'
+                },
+                cache: 'no-cache'
+            })
+                .then(response => response.text())
+                .then(text => {
+                    try {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(text, 'text/html');
+
+                        const username = doc.querySelector('.user-info h2')?.textContent.replace('Benvenuto, ', '').replace('Welcome, ', '').replace('!', '').trim();
+                        const profilePhoto = doc.querySelector('.profile-photo')?.getAttribute('src');
+
+                        updateProfileUI({
+                            logged_in: true,
+                            username: username,
+                            profile_photo: profilePhoto
+                        });
+                    } catch (error) {
+                        console.error('Errore nel parsing della risposta:', error);
+                        showLoginUI();
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore nel controllo login:', error);
+                    showLoginUI();
+                });
+        }
+
+        function updateProfileUI(data) {
+            const profileButton = document.getElementById('profile-button');
+            if (!profileButton) return;
+
+            profileButton.innerHTML = '';
+
+            if (data && data.logged_in === true && data.username && data.username.trim() !== '') {
+                if (data.profile_photo) {
+                    const img = document.createElement('img');
+                    img.className = 'profile-pic';
+                    img.alt = 'Foto profilo';
+
+                    img.onerror = function () {
+                        const initial = data.username.charAt(0).toUpperCase();
+                        const defaultAvatarDiv = document.createElement('div');
+                        defaultAvatarDiv.className = 'default-avatar';
+                        defaultAvatarDiv.textContent = initial;
+                        profileButton.appendChild(defaultAvatarDiv);
+                    };
+
+                    img.onload = function () {
+                        profileButton.appendChild(img);
+                    };
+
+                    img.src = data.profile_photo;
+
+                } else {
+                    const initial = data.username.charAt(0).toUpperCase();
+                    const defaultAvatarDiv = document.createElement('div');
+                    defaultAvatarDiv.className = 'default-avatar';
+                    defaultAvatarDiv.textContent = initial;
+                    profileButton.appendChild(defaultAvatarDiv);
+                }
+
+                const accountMenuItemSpan = document.querySelector('.profile-menu-item span');
+                if (accountMenuItemSpan) {
+                    accountMenuItemSpan.setAttribute('data-translate-it', 'Il mio account');
+                    accountMenuItemSpan.setAttribute('data-translate-en', 'My Account');
+                    const currentLang = localStorage.getItem('preferredLanguage') || 'it';
+                    if (currentLang === 'it') {
+                        accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-it');
+                    } else {
+                        accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-en');
+                    }
+                }
+
+            } else {
+                const defaultAvatarDiv = document.createElement('div');
+                defaultAvatarDiv.className = 'default-avatar';
+                defaultAvatarDiv.innerHTML = `<i class="fas fa-user"></i>`;
+                profileButton.appendChild(defaultAvatarDiv);
+
+                const accountMenuItemSpan = document.querySelector('.profile-menu-item span');
+                if (accountMenuItemSpan) {
+                    accountMenuItemSpan.setAttribute('data-translate-it', 'Accedi');
+                    accountMenuItemSpan.setAttribute('data-translate-en', 'Login');
+                    const currentLang = localStorage.getItem('preferredLanguage') || 'it';
+                    if (currentLang === 'it') {
+                        accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-it');
+                    } else {
+                        accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-en');
+                    }
+                }
+            }
+        }
+
+        function showLoginUI() {
+            const profileButton = document.getElementById('profile-button');
+            if (profileButton) {
+                profileButton.innerHTML = '';
+                const defaultAvatarDiv = document.createElement('div');
+                defaultAvatarDiv.className = 'default-avatar';
+                defaultAvatarDiv.innerHTML = `<i class="fas fa-user"></i>`;
+                profileButton.appendChild(defaultAvatarDiv);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileButton = document.getElementById('profile-button');
+            const profileMenu = document.getElementById('profile-menu');
+
+            if (profileButton && profileMenu) {
+                checkLoginStatus();
+                loadSavedLanguage();
+
+                profileButton.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    profileMenu.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.language-option').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        const lang = this.getAttribute('data-lang');
+                        translatePage(lang);
+                    });
+                });
+            }
+
+            document.addEventListener('click', function (event) {
+                if (profileMenu && !profileMenu.contains(event.target) && profileMenu.classList.contains('active') && event.target !== profileButton) {
+                    profileMenu.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('contextmenu', function (event) {
+                event.preventDefault();
+                if (window.innerWidth > 768) {
+                    const customMenu = document.getElementById('custom-menu');
+                    if (customMenu) {
+                        customMenu.style.display = 'block';
+                        customMenu.style.left = event.pageX + 'px';
+                        customMenu.style.top = event.pageY + 'px';
+                    }
+                }
+            });
+
+            document.addEventListener('click', function (event) {
+                const customMenu = document.getElementById('custom-menu');
+                if (customMenu && !customMenu.contains(event.target)) {
+                    customMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
