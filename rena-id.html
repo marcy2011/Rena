@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <title id="page-title">Rena - Rena ID</title>
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=open-sauce-one@400,600,700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Text+Me+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000000;
+      color: white;
+      font-family: 'Open Sauce One', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: url('cursore.png'), auto;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      height: 150vh;
+      z-index: -2;
+      background:
+        linear-gradient(to bottom,
+          rgba(0, 0, 0, 0) 80%,
+          rgba(0, 0, 0, 0.8) 95%,
+          #000000 100%),
+        radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.15), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15), transparent 50%),
+        radial-gradient(circle at 40% 90%, rgba(244, 63, 94, 0.15), transparent 50%);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .floating-navbar {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(60px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1200px;
+      z-index: 1000;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .floating-navbar:hover {
+      background: rgba(0, 0, 0, 0.6);
+      transform: translateX(-50%) translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .header-brand {
+      text-decoration: none;
+    }
+
+    .header-brand:hover {
+      transform: none;
+    }
+
+    .rena-text {
+      font-family: 'Text Me One', sans-serif;
+      font-size: 1.8em;
+      color: white;
+      text-decoration: none;
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      line-height: 1;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1;
+    }
+
+    .nav-link::before {
+      display: none;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar-account {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-shrink: 0;
+    }
+
+    .account-menu {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: none;
+    }
+
+    .menu-icon {
+      width: 28px;
+      height: 28px;
+      transition: none;
+      display: block;
+    }
+
+    .menu-icon path {
+      transition: none;
+    }
+
+    .profile-menu-container {
+      position: relative;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #profile-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .default-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .profile-menu {
+      display: none;
+      position: absolute;
+      top: 65px;
+      right: -15px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(20px);
+      border-radius: 12px;
+      padding: 15px;
+      width: 200px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-menu.active {
+      display: block;
+    }
+
+    .profile-menu-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-bottom: 5px;
+    }
+
+    .profile-menu-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .profile-menu-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 10px 0;
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .language-option.active {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .language-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .language-flag {
+      width: 20px;
+      height: 15px;
+      margin-right: 10px;
+      border-radius: 3px;
+    }
+
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      stroke: #10B981;
+      stroke-width: 2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .language-option.active .check-icon {
+      opacity: 1;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      position: relative;
+      margin-top: 120px;
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 32px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(16, 185, 129, 0.2), transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(59, 130, 246, 0.2), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(244, 63, 94, 0.2), transparent 50%);
+      filter: blur(80px);
+      z-index: -1;
+      animation: heroGlow 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% {
+        transform: translate3d(-20px, -20px, 0) scale(1);
+      }
+
+      100% {
+        transform: translate3d(20px, 20px, 0) scale(1.1);
+      }
+    }
+
+    .hero-content {
+      padding: 0 10px 0 20px;
+    }
+
+    .hero-logo {
+      display: block;
+      margin: 0 auto 24px;
+      width: clamp(80px, 15vw, 150px);
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+      transition: transform 0.3s ease;
+    }
+
+    .hero-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.8);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.6;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      border-radius: 50px;
+      padding: 16px 32px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #10B981, #0F766E);
+      color: #ffffff !important;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(16, 185, 129, 0.4);
+      background: linear-gradient(135deg, #0F766E, #10B981);
+    }
+
+    .btn-primary * {
+      color: #ffffff !important;
+      z-index: 2;
+      position: relative;
+    }
+
+    .btn-primary i {
+      color: #ffffff !important;
+    }
+
+    .btn-primary span {
+      color: #ffffff !important;
+      display: inline !important;
+      font-weight: 600 !important;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+    }
+
+    .badges {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(10px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 80px 0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card .icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #10B981, #10B981);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #000;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    .content-section {
+      margin: 80px 0;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .section-header .section-icon {
+      width: 32px;
+      height: 32px;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .content-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 24px;
+    }
+
+    .content-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content-section li {
+      margin-bottom: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .content-section li:last-child {
+      border-bottom: none;
+    }
+
+    .content-section strong {
+      color: #10B981;
+      font-weight: 600;
+    }
+
+    .support-link {
+      color: #10B981;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .support-link:hover {
+      color: #10B981;
+      text-decoration: underline;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
+      margin: 60px 0;
+    }
+
+    #custom-menu {
+      display: none;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(30px);
+      z-index: 99999999;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    #custom-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #custom-menu ul li {
+      margin-bottom: 12px;
+    }
+
+    #custom-menu ul li a {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      gap: 8px;
+    }
+
+    #custom-menu ul li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    #custom-menu ul li a img {
+      border-radius: 5px;
+    }
+
+    .custom-menu-svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .developer-section {
+      text-align: left;
+    }
+
+    .developer-section .hero-subtitle {
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+    }
+
+    .developer-section .cta-row {
+      justify-content: flex-start;
+    }
+
+    @media screen and (max-width: 768px) {
+      .floating-navbar {
+        width: calc(95%);
+        padding: 12px 15px;
+        top: 20px;
+        justify-content: space-between;
+        max-width: none;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .container {
+        padding: 0 10px;
+      }
+
+      .profile-menu-container {
+        order: 1;
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .navbar-logo {
+        order: 2;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .navbar-nav {
+        display: none;
+      }
+
+      .navbar-account {
+        order: 3;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-grow: 1;
+        justify-content: flex-end;
+      }
+
+      .rena-text {
+        font-size: 1.5em;
+      }
+
+      .hero {
+        margin-top: 100px;
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin: 60px 0;
+      }
+
+      .content-section {
+        margin: 60px 0;
+        padding: 30px 20px;
+      }
+
+      .profile-menu {
+        left: 0 !important;
+        right: auto !important;
+        transform: none !important;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .floating-navbar {
+        padding: 10px 16px;
+      }
+
+      .rena-text {
+        font-size: 1.3em;
+      }
+
+      .hero {
+        padding: 40px 15px;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      .floating-navbar {
+        top: 30px;
+        max-width: 1100px;
+      }
+
+      .navbar-nav {
+        display: flex;
+        order: 2;
+      }
+
+      .navbar-logo {
+        order: 1;
+      }
+
+      .profile-menu-container {
+        order: 3;
+      }
+
+      .navbar-account {
+        display: none;
+      }
+
+      .rena-text {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn.btn-ghost span {
+        font-size: 14.8px;
+      }
+
+      .btn.btn-ghost svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .profile-menu-item i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="floating-navbar">
+    <div class="profile-menu-container">
+      <div id="profile-button">
+      </div>
+      <div class="profile-menu" id="profile-menu">
+        <a href="account.php" class="profile-menu-item">
+          <i class="fas fa-user"></i>
+          <span data-translate-it="Il mio account" data-translate-en="My Account">Il mio account</span>
+        </a>
+        <div class="profile-menu-divider"></div>
+        <div class="profile-menu-item" style="pointer-events: none; opacity: 0.8;">
+          <i class="fas fa-language"></i>
+          <span data-translate-it="Lingua" data-translate-en="Language">Lingua</span>
+        </div>
+        <div class="language-option" data-lang="it">
+          <div class="language-content">
+            <img src="https://renadeveloper.altervista.org/bandierait.png" class="language-flag" alt="Italiano">
+            <span>Italiano</span>
+          </div>
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <div class="language-option" data-lang="en">
+          <div class="language-content">
+            <img src="https://renadeveloper.altervista.org/bandieraen.png" class="language-flag" alt="English">
+            <span>English</span>
+          </div>
+          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-logo">
+      <a class="header-brand" href="https://rena.altervista.org">
+        <span class="rena-text">RENA</span>
+      </a>
+    </div>
+
+    <div class="navbar-nav">
+      <a href="https://rena.altervista.org" class="nav-link">
+        <img src="https://gcsapp.altervista.org/homebanner.png" alt="Home" width="20">
+        <span>Home</span>
+      </a>
+      <a href="https://rena.altervista.org/news.php" class="nav-link">
+        <svg class="custom-menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+          stroke="#ffffff">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M5 21H17C19.2091 21 21 19.2091 21 17V5C21 3.89543 20.1046 3 19 3H9C7.89543 3 7 3.89543 7 5V18C7 19.6569 6.65685 21 5 21C3.61929 21 3 19.8807 3 18.5V10Z"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="12" cy="8" r="1" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></circle>
+            <path d="M11 14H17" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M11 17H14" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+          </g>
+        </svg>
+        <span data-translate-it="News" data-translate-en="News">News</span>
+      </a>
+      <a href="https://rena.altervista.org/chi-siamo.html" class="nav-link">
+        <svg class="custom-menu-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" fill="#ffffff" stroke="#ffffff">
+          <g>
+            <path d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 
+                c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z">
+            </path>
+            <path
+              d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 
+                c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 
+                c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z">
+            </path>
+          </g>
+        </svg>
+        <span data-translate-it="Chi Siamo" data-translate-en="About Us">Chi Siamo</span>
+      </a>
+      <a href="https://rena.altervista.org/privacy-policy.html" class="nav-link">
+        <svg class="custom-menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+            stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span data-translate-it="Privacy Policy" data-translate-en="Privacy Policy">Privacy Policy</span>
+      </a>
+    </div>
+
+    <div class="navbar-account">
+      <div class="account-menu">
+        <a href="https://rena.altervista.org/menu.html">
+          <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            transform="rotate(0)matrix(-1, 0, 0, 1, 0, 0)" stroke="#ffffff">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M4 6H20M4 12H14M4 18H9" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <section class="hero" id="top">
+        <div class="hero-content">
+          <a href="https://github.com/marcy2011/Rena-ID" class="hero-github-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </a>
+          <img src="idlogo.png" alt="Rena ID Logo" class="hero-logo">
+          <div class="eyebrow">
+            <span class="dot"></span>
+            <span data-translate-it="Identità Unificata" data-translate-en="Unified Identity">Unified Identity</span>
+          </div>
+          <h1 data-translate-it="Presentiamo Rena ID" data-translate-en="Introducing Rena ID">Introducing Rena ID</h1>
+          <p class="hero-subtitle"
+            data-translate-it="Un unico accesso sicuro per l'intero ecosistema Rena. Veloce, personalizzato e studiato per proteggere i tuoi dati."
+            data-translate-en="One secure sign-in for the entire Rena ecosystem. Fast, personalized, and designed to protect your data.">
+            One secure sign-in for the entire Rena ecosystem. Fast, personalized, and designed to protect your data.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://rena.altervista.org/register.php">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span data-translate-it="Crea il tuo Rena ID" data-translate-en="Create your Rena ID">
+                Crea il tuo Rena ID
+              </span>
+            </a>
+          </div>
+          <div class="badges">
+            <span class="badge"><i class="fa-solid fa-lock"></i> MFA</span>
+            <span class="badge"><i class="fa-solid fa-bolt"></i> OAuth-ready</span>
+            <span class="badge">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" width="16"
+                height="16">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M2 14.5C2 13.0955 2 12.3933 2.33706 11.8889C2.48298 11.6705 2.67048 11.483 2.88886 11.3371C3.39331 11 4.09554 11 5.5 11C6.90446 11 7.60669 11 8.11114 11.3371C8.32952 11.483 8.51702 11.6705 8.66294 11.8889C9 12.3933 9 13.0955 9 14.5V18.5C9 19.9045 9 20.6067 8.66294 21.1111C8.51702 21.3295 8.32666 21.517 8.11114 21.6629C7.60669 22 6.90446 22 5.5 22C4.09554 22 3.39331 22 2.88886 21.6629C2.67048 21.517 2.48298 21.3295 2.33706 21.1111C2 20.6067 2 19.9045 2 18.5V14.5Z"
+                    fill="#ffffff" />
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M22 10V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22C12.3009 22 10.9846 22 9.94386 21.8929C10.2787 21.368 10.3977 20.8107 10.4502 20.2949C10.5001 19.8039 10.5001 19.2114 10.5 18.566L10.5 18.5V14.5L10.5 14.434C10.5001 13.7886 10.5001 13.1961 10.4502 12.7051C10.396 12.1723 10.2708 11.5953 9.91014 11.0555C9.65479 10.6733 9.32666 10.3452 8.9445 10.0899C8.40473 9.72919 7.82766 9.60403 7.29488 9.54983C6.91621 9.51131 6.47721 9.50253 6.00011 9.50056C6.00239 6.05993 6.0529 4.29024 7.17157 3.17157C8.34315 2 10.2288 2 14 2C17.7712 2 19.6569 2 20.8284 3.17157C22 4.34315 22 6.22876 22 10ZM11.25 19C11.25 18.5858 11.5858 18.25 12 18.25H17C17.4142 18.25 17.75 18.5858 17.75 19C17.75 19.4142 17.4142 19.75 17 19.75H12C11.5858 19.75 11.25 19.4142 11.25 19Z"
+                    fill="#ffffff" />
+                </g>
+              </svg>
+              Cross-device
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider" id="learn-more"></div>
+
+      <section class="grid" aria-label="Key highlights">
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-fingerprint"></i></div>
+          <h3 data-translate-it="Accesso Semplificato" data-translate-en="Simplified Access">Simplified Access</h3>
+          <p data-translate-it="Un solo account per tutti i servizi Rena, senza pensieri."
+            data-translate-en="One account for every Rena service, no hassle.">
+            One account for every Rena service, no hassle.
+          </p>
+        </article>
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-user-lock"></i></div>
+          <h3 data-translate-it="Sicurezza Avanzata" data-translate-en="Enhanced Security">Enhanced Security</h3>
+          <p data-translate-it="Crittografia moderna e MFA per proteggere ciò che conta."
+            data-translate-en="Modern encryption and MFA to safeguard what matters.">
+            Modern encryption and MFA to safeguard what matters.
+          </p>
+        </article>
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-sliders"></i></div>
+          <h3 data-translate-it="Controllo della Privacy" data-translate-en="Privacy Control">Privacy Control</h3>
+          <p data-translate-it="Decidi cosa condividere e gestisci i permessi con facilità."
+            data-translate-en="Decide what to share and manage permissions with ease.">
+            Decide what to share and manage permissions with ease.
+          </p>
+        </article>
+      </section>
+
+      <section class="content-section">
+        <div class="section-header">
+          <svg class="section-icon" fill="#ffffff" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"
+            stroke="#ffffff">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M960 0c530.193 0 960 429.807 960 960s-429.807 960-960 960S0 1490.193 0 960 429.807 0 960 0Zm223.797 707.147c-28.531-29.561-67.826-39.944-109.227-39.455-55.225.657-114.197 20.664-156.38 40.315-100.942 47.024-178.395 130.295-242.903 219.312-11.616 16.025-17.678 34.946 2.76 49.697 17.428 12.58 29.978 1.324 40.49-9.897l.69-.74c.801-.862 1.591-1.72 2.37-2.565 11.795-12.772 23.194-25.999 34.593-39.237l2.85-3.31 2.851-3.308c34.231-39.687 69.056-78.805 115.144-105.345 27.4-15.778 47.142 8.591 42.912 35.963-2.535 16.413-11.165 31.874-17.2 47.744-21.44 56.363-43.197 112.607-64.862 168.888-23.74 61.7-47.405 123.425-70.426 185.398l-2 5.38-1.998 5.375c-20.31 54.64-40.319 108.872-53.554 165.896-10.575 45.592-24.811 100.906-4.357 145.697 11.781 25.8 36.77 43.532 64.567 47.566 37.912 5.504 78.906 6.133 116.003-2.308 19.216-4.368 38.12-10.07 56.57-17.005 56.646-21.298 108.226-54.146 154.681-92.755 47.26-39.384 88.919-85.972 126.906-134.292 12.21-15.53 27.004-32.703 31.163-52.596 3.908-18.657-12.746-45.302-34.326-34.473-11.395 5.718-19.929 19.867-28.231 29.27-10.42 11.798-21.044 23.423-31.786 34.92-21.488 22.987-43.513 45.463-65.634 67.831-13.54 13.692-30.37 25.263-47.662 33.763-21.59 10.609-38.785-1.157-36.448-25.064 2.144-21.954 7.515-44.145 15.046-64.926 30.306-83.675 61.19-167.135 91.834-250.686 19.157-52.214 38.217-104.461 56.999-156.816 17.554-48.928 32.514-97.463 38.834-149.3 4.357-35.71-4.9-72.647-30.269-98.937Zm63.72-401.498c-91.342-35.538-200.232 25.112-218.574 121.757-13.25 69.784 13.336 131.23 67.998 157.155 105.765 50.16 232.284-29.954 232.29-147.084.005-64.997-28.612-111.165-81.715-131.828Z"
+                fill-rule="evenodd"></path>
+            </g>
+          </svg>
+          <h2 data-translate-it="Cos'è Rena ID?" data-translate-en="What is Rena ID?">
+            What is Rena ID?
+          </h2>
+        </div>
+        <p data-translate-it="Rena ID è la tua identità digitale unica e sicura all'interno dell'ecosistema Rena. Ti permette di accedere a tutti i servizi e le applicazioni Rena con un solo login."
+          data-translate-en="Rena ID is your unique and secure digital identity within the Rena ecosystem. It allows you to access all Rena services and applications with a single login.">
+          Rena ID è la tua identità digitale unica e sicura all'interno dell'ecosistema Rena. Ti permette di accedere a
+          tutti i servizi e le applicazioni Rena con un solo login.
+        </p>
+        <ul>
+          <li>
+            <strong data-translate-it="Identità Unificata" data-translate-en="Unified Identity">Identità
+              Unificata</strong>:
+            <span
+              data-translate-it="Un unico account per tutti i prodotti e servizi offerti da Rena, semplificando la tua esperienza online."
+              data-translate-en="A single account for all products and services offered by Rena, simplifying your online experience.">
+              Un unico account per tutti i prodotti e servizi offerti da Rena, semplificando la tua esperienza online.
+            </span>
+          </li>
+          <li>
+            <strong data-translate-it="Accesso Semplificato" data-translate-en="Simplified Access">Accesso
+              Semplificato</strong>:
+            <span
+              data-translate-it="Dimentica password multiple. Con Rena ID, un solo set di credenziali ti collega all'intero mondo Rena."
+              data-translate-en="Forget multiple passwords. With Rena ID, a single set of credentials connects you to the entire Rena world.">
+              Dimentica password multiple. Con Rena ID, un solo set di credenziali ti collega all'intero mondo Rena.
+            </span>
+          </li>
+          <li>
+            <strong data-translate-it="Coerenza su Dispositivi" data-translate-en="Device Consistency">Coerenza su
+              Dispositivi</strong>:
+            <span
+              data-translate-it="Le tue preferenze e attività sono sincronizzate, offrendoti un'esperienza fluida su qualsiasi dispositivo."
+              data-translate-en="Your preferences and activities are synchronized, providing you with a seamless experience on any device.">
+              Le tue preferenze e attività sono sincronizzate, offrendoti un'esperienza fluida su qualsiasi dispositivo.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M7 3V21M7 3L11 7M7 3L3 7M14 3H15M14 9H17M14 15H19M14 21H21" stroke="#ffffff" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+          <h2 data-translate-it="Vantaggi di Rena ID" data-translate-en="Benefits of Rena ID">Benefits of Rena ID</h2>
+        </div>
+        <p data-translate-it="Rena ID è progettato per migliorare la tua interazione con i nostri servizi, offrendo numerosi vantaggi."
+          data-translate-en="Rena ID is designed to enhance your interaction with our services, offering numerous benefits.">
+          Rena ID è progettato per migliorare la tua interazione con i nostri servizi, offrendo numerosi vantaggi.
+        </p>
+        <ul>
+          <li>
+            <strong data-translate-it="Accesso Universale" data-translate-en="Universal Access">Accesso
+              Universale</strong>:
+            <span
+              data-translate-it="Accedi a tutte le applicazioni e piattaforme Rena con un solo set di credenziali, eliminando la necessità di account separati."
+              data-translate-en="Access all Rena applications and platforms with a single set of credentials, eliminating the need for separate accounts.">
+              Accedi a tutte le applicazioni e piattaforme Rena con un solo set di credenziali, eliminando la necessità
+              di account separati.
+            </span>
+          </li>
+          <li>
+            <strong data-translate-it="Sicurezza Avanzata" data-translate-en="Enhanced Security">Sicurezza
+              Avanzata</strong>:
+            <span
+              data-translate-it="Le tue informazioni sono protette con tecnologie di crittografia all'avanguardia e metodi di autenticazione sicuri."
+              data-translate-en="Your information is protected with state-of-the-art encryption technologies and secure authentication methods.">
+              Le tue informazioni sono protette con tecnologie di crittografia all'avanguardia e metodi di
+              autenticazione sicuri.
+            </span>
+          </li>
+          <li>
+            <strong data-translate-it="Esperienza Personalizzata" data-translate-en="Personalized Experience">Esperienza
+              Personalizzata</strong>:
+            <span
+              data-translate-it="Rena ID impara dalle tue preferenze per offrirti contenuti e funzionalità su misura, migliorando la tua esperienza utente."
+              data-translate-en="Rena ID learns from your preferences to offer tailored content and features, enhancing your user experience.">
+              Rena ID impara dalle tue preferenze per offrirti contenuti e funzionalità su misura, migliorando la tua
+              esperienza utente.
+            </span>
+          </li>
+          <li>
+            <strong data-translate-it="Controllo della Privacy" data-translate-en="Privacy Control">Controllo della
+              Privacy</strong>:
+            <span
+              data-translate-it="Hai pieno controllo sui tuoi dati. Decidi quali informazioni condividere e come vengono utilizzate all'interno dell'ecosistema Rena."
+              data-translate-en="You have full control over your data. Decide what information to share and how it is used within the Rena ecosystem.">
+              Hai pieno controllo sui tuoi dati. Decidi quali informazioni condividere e come vengono utilizzate
+              all'interno dell'ecosistema Rena.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2 data-translate-it="La Sicurezza di Rena ID" data-translate-en="Rena ID Security">
+            Rena ID Security
+          </h2>
+        </div>
+        <p data-translate-it="La tua sicurezza è la nostra priorità. Le password di Rena ID sono protette tramite algoritmi di hash avanzati, il che significa che non vengono mai memorizzate in chiaro. Questo rende i tuoi dati al sicuro anche in caso di violazioni."
+          data-translate-en="Your security is our priority. Rena ID passwords are protected using advanced hashing algorithms, meaning they are never stored in plain text. This keeps your data safe even in the event of breaches.">
+          Your security is our priority. Rena ID passwords are protected using advanced hashing algorithms, meaning they
+          are never stored in plain text. This keeps your data safe even in the event of breaches.
+        </p>
+        <p data-translate-it="Inoltre, offriamo un processo di recupero password sicuro. Se dimentichi la tua password, puoi recuperarla facilmente tramite la verifica di un codice temporaneo inviato al tuo indirizzo email registrato, assicurandoti che solo tu possa accedere al tuo account."
+          data-translate-en="Furthermore, we offer a secure password recovery process. If you forget your password, you can easily recover it through the verification of a temporary code sent to your registered email address, ensuring that only you can access your account.">
+          Furthermore, we offer a secure password recovery process. If you forget your password, you can easily recover
+          it through the verification of a temporary code sent to your registered email address, ensuring that only you
+          can access your account.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"
+            stroke="#ffffff">
+            <path
+              d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM17 15.71C17 17.28 16.14 17.65 15.1 16.53C14.62 16.02 13.88 16.06 13.46 16.62L12.87 17.41C12.4 18.04 11.62 18.04 11.15 17.41L10.55 16.61C10.13 16.05 9.39 16.01 8.91 16.52C7.86 17.64 7 17.27 7 15.71V9.08C7 6.71 7.56 6.12 9.78 6.12H14.22C16.44 6.12 17 6.71 17 9.08V15.71Z"
+              fill="#ffffff"></path>
+          </svg>
+          <h2 data-translate-it="Come Iniziare" data-translate-en="How to Get Started">How to Get Started</h2>
+        </div>
+        <p data-translate-it="Creare il tuo Rena ID è semplice e veloce. Segui questi passaggi per iniziare a beneficiare di un'esperienza online unificata e sicura:"
+          data-translate-en="Creating your Rena ID is quick and easy. Follow these steps to start benefiting from a unified and secure online experience:">
+          Creating your Rena ID is quick and easy. Follow these steps to start benefiting from a unified and secure
+          online experience:
+        </p>
+        <ul>
+          <li
+            data-translate-it="Visita la pagina di registrazione: Clicca sul pulsante 'Crea il tuo Rena ID' qui sotto."
+            data-translate-en="Visit the registration page: Click on the 'Create your Rena ID' button below.">
+            Visit the registration page: Click on the 'Create your Rena ID' button below.
+          </li>
+          <li data-translate-it="Compila il modulo: Inserisci i dati richiesti per creare il tuo profilo."
+            data-translate-en="Fill out the form: Enter the required information to create your profile.">
+            Fill out the form: Enter the required information to create your profile.
+          </li>
+          <li
+            data-translate-it="Inizia ad esplorare: Accedi ai tuoi servizi preferiti e scopri tutti i vantaggi di Rena ID!"
+            data-translate-en="Start exploring: Log in to your favorite services and discover all the benefits of Rena ID!">
+            Start exploring: Log in to your favorite services and discover all the benefits of Rena ID!
+          </li>
+        </ul>
+        <p>
+          <span data-translate-it="Pronto a unirti alla comunità Rena? "
+            data-translate-en="Ready to join the Rena community? ">
+            Pronto a unirti alla comunità Rena?
+          </span>
+          <a href="https://rena.altervista.org/register.php" class="support-link"
+            data-translate-it="Crea il tuo Rena ID ora!" data-translate-en="Create your Rena ID now!">
+            Crea il tuo Rena ID ora!
+          </a>
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="content-section developer-section">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 8L3 12L7 16M17 8L21 12L17 16M14 4L10 20" stroke="#ffffff" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2 data-translate-it="Integra Accedi con Rena" data-translate-en="Integrate Sign in with Rena">
+            Integrate Sign in with Rena
+          </h2>
+        </div>
+        <p class="hero-subtitle"
+          data-translate-it="Offri ai tuoi utenti un accesso rapido e sicuro. Integra il nostro sistema di autenticazione OAuth 2.0 nelle tue applicazioni e servizi con pochi semplici passaggi."
+          data-translate-en="Offer your users fast and secure access. Integrate our OAuth 2.0 authentication system into your applications and services with a few simple steps.">
+          Offer your users fast and secure access. Integrate our OAuth 2.0 authentication system into your applications
+          and services with a few simple steps.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-ghost" href="https://rena.altervista.org/docs/rena-id.html">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"
+              stroke="#ffffff" style="vertical-align:middle; margin-right:4px;">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M11 3.99995C12.8839 2.91716 14.9355 2.15669 17.07 1.74995C17.551 1.63467 18.0523 1.63283 18.5341 1.74458C19.016 1.85632 19.4652 2.07852 19.8464 2.39375C20.2276 2.70897 20.5303 3.10856 20.7305 3.56086C20.9307 4.01316 21.0229 4.50585 21 4.99995V13.9999C20.9699 15.117 20.5666 16.1917 19.8542 17.0527C19.1419 17.9136 18.1617 18.5112 17.07 18.7499C14.9355 19.1567 12.8839 19.9172 11 20.9999"
+                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                  d="M10.9995 3.99995C9.1156 2.91716 7.06409 2.15669 4.92957 1.74995C4.44856 1.63467 3.94731 1.63283 3.46546 1.74458C2.98362 1.85632 2.53439 2.07852 2.15321 2.39375C1.77203 2.70897 1.46933 3.10856 1.26911 3.56086C1.0689 4.01316 0.976598 4.50585 0.999521 4.99995V13.9999C1.0296 15.117 1.433 16.1917 2.14533 17.0527C2.85767 17.9136 3.83793 18.5112 4.92957 18.7499C7.06409 19.1567 9.1156 19.9172 10.9995 20.9999"
+                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M11 21V4" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </g>
+            </svg>
+            <span style="margin-bottom: 2px;" data-translate-en="Read the documentation"
+              data-translate-it="Leggi la documentazione">Read the documentation</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    function translatePage(lang) {
+      localStorage.setItem('preferredLanguage', lang);
+
+      document.querySelectorAll('[data-translate-it]').forEach(function (el) {
+        if (lang === 'it') {
+          el.textContent = el.getAttribute('data-translate-it');
+        } else if (lang === 'en') {
+          el.textContent = el.getAttribute('data-translate-en');
+        }
+      });
+
+      var titleElement = document.getElementById('page-title');
+      if (titleElement) {
+        if (lang === 'it') {
+          titleElement.textContent = 'Rena - Introduzione a Rena ID';
+        } else if (lang === 'en') {
+          titleElement.textContent = 'Rena - Introducing Rena ID';
+        }
+      }
+
+      updateLanguageIndicator(lang);
+    }
+
+    function updateLanguageIndicator(activeLang) {
+      document.querySelectorAll('.language-option').forEach(function (option) {
+        const lang = option.getAttribute('data-lang');
+        if (lang === activeLang) {
+          option.classList.add('active');
+        } else {
+          option.classList.remove('active');
+        }
+      });
+    }
+
+    function loadSavedLanguage() {
+      const savedLang = localStorage.getItem('preferredLanguage') || 'it';
+      translatePage(savedLang);
+    }
+
+    function checkLoginStatus() {
+      fetch('account.php?nocache=' + new Date().getTime(), {
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        },
+        cache: 'no-cache'
+      })
+        .then(response => response.text())
+        .then(text => {
+          try {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+
+            const username = doc.querySelector('.user-info h2')?.textContent.replace('Benvenuto, ', '').replace('Welcome, ', '').replace('!', '').trim();
+            const profilePhoto = doc.querySelector('.profile-photo')?.getAttribute('src');
+
+            updateProfileUI({
+              logged_in: true,
+              username: username,
+              profile_photo: profilePhoto
+            });
+          } catch (error) {
+            console.error('Errore nel parsing della risposta:', error);
+            showLoginUI();
+          }
+        })
+        .catch(error => {
+          console.error('Errore nel controllo login:', error);
+          showLoginUI();
+        });
+    }
+
+    function updateProfileUI(data) {
+      const profileButton = document.getElementById('profile-button');
+      if (!profileButton) return;
+
+      profileButton.innerHTML = '';
+
+      if (data && data.logged_in === true && data.username && data.username.trim() !== '') {
+        if (data.profile_photo) {
+          const img = document.createElement('img');
+          img.className = 'profile-pic';
+          img.alt = 'Foto profilo';
+
+          img.onerror = function () {
+            const initial = data.username.charAt(0).toUpperCase();
+            const defaultAvatarDiv = document.createElement('div');
+            defaultAvatarDiv.className = 'default-avatar';
+            defaultAvatarDiv.textContent = initial;
+            profileButton.appendChild(defaultAvatarDiv);
+          };
+
+          img.onload = function () {
+            profileButton.appendChild(img);
+          };
+
+          img.src = data.profile_photo;
+
+        } else {
+          const initial = data.username.charAt(0).toUpperCase();
+          const defaultAvatarDiv = document.createElement('div');
+          defaultAvatarDiv.className = 'default-avatar';
+          defaultAvatarDiv.innerHTML = `<i class="fas fa-user"></i>`;
+          profileButton.appendChild(defaultAvatarDiv);
+        }
+
+        const accountMenuItemSpan = document.querySelector('.profile-menu-item span');
+        if (accountMenuItemSpan) {
+          accountMenuItemSpan.setAttribute('data-translate-it', 'Il mio account');
+          accountMenuItemSpan.setAttribute('data-translate-en', 'My Account');
+          const currentLang = localStorage.getItem('preferredLanguage') || 'it';
+          if (currentLang === 'it') {
+            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-it');
+          } else {
+            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-en');
+          }
+        }
+
+      } else {
+        const defaultAvatarDiv = document.createElement('div');
+        defaultAvatarDiv.className = 'default-avatar';
+        defaultAvatarDiv.innerHTML = `<i class="fas fa-user"></i>`;
+        profileButton.appendChild(defaultAvatarDiv);
+
+        const accountMenuItemSpan = document.querySelector('.profile-menu-item span');
+        if (accountMenuItemSpan) {
+          accountMenuItemSpan.setAttribute('data-translate-it', 'Accedi');
+          accountMenuItemSpan.setAttribute('data-translate-en', 'Login');
+          const currentLang = localStorage.getItem('preferredLanguage') || 'it';
+          if (currentLang === 'it') {
+            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-it');
+          } else {
+            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-en');
+          }
+        }
+      }
+    }
+
+    function showLoginUI() {
+      const profileButton = document.getElementById('profile-button');
+      if (profileButton) {
+        profileButton.innerHTML = '';
+        const defaultAvatarDiv = document.createElement('div');
+        defaultAvatarDiv.className = 'default-avatar';
+        defaultAvatarDiv.innerHTML = `<i class="fas fa-user"></i>`;
+        profileButton.appendChild(defaultAvatarDiv);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const profileButton = document.getElementById('profile-button');
+      const profileMenu = document.getElementById('profile-menu');
+
+      if (profileButton && profileMenu) {
+        checkLoginStatus();
+        loadSavedLanguage();
+
+        profileButton.addEventListener('click', function (e) {
+          e.stopPropagation();
+          profileMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.language-option').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const lang = this.getAttribute('data-lang');
+            translatePage(lang);
+          });
+        });
+      }
+
+      document.addEventListener('click', function (event) {
+        if (profileMenu && !profileMenu.contains(event.target) && profileMenu.classList.contains('active') && event.target !== profileButton) {
+          profileMenu.classList.remove('active');
+        }
+      });
+
+      document.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+        if (window.innerWidth > 768) {
+          const customMenu = document.getElementById('custom-menu');
+          if (customMenu) {
+            customMenu.style.display = 'block';
+            customMenu.style.left = event.pageX + 'px';
+            customMenu.style.top = event.pageY + 'px';
+          }
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        const customMenu = document.getElementById('custom-menu');
+        if (customMenu && !customMenu.contains(event.target)) {
+          customMenu.style.display = 'none';
+        }
+      });
+    });
+  </script>
+  <style>
+    *:focus {
+      outline: none;
+    }
+
+    button:focus,
+    input:focus,
+    textarea:focus {
+      outline: none;
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+      .social-link {
+        flex-direction: row;
+        text-align: left;
+        padding: 15px;
+      }
+
+      .social-icon-wrapper {
+        margin-right: 15px;
+        margin-bottom: 0;
+      }
+    }
+
+    .hero-github-link {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-github-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-github-link svg {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+
+  <div style="width: 50%; height: 90px;"></div>
+  <footer class="site-footer">
+    <div class="footer-buttons">
+      <a href="https://rena.altervista.org/privacy-policy.html" class="footer-button">
+        <svg class="footer-button-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+            stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span>Privacy Policy</span>
+      </a>
+      <a href="https://rena.altervista.org/chi-siamo.html" class="footer-button">
+        <svg class="footer-button-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" fill="#ffffff" stroke="#ffffff">
+          <g>
+            <path class="st0"
+              d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z">
+            </path>
+            <path class="st0"
+              d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z">
+            </path>
+          </g>
+        </svg>
+        <span data-translate-it="Chi Siamo" data-translate-en="About Us">Chi Siamo</span>
+      </a>
+    </div>
+  </footer>
+
+  <style>
+    .site-footer {
+      background: black;
+      padding: 20px 0;
+      margin-top: -115px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-button {
+      display: flex;
+      align-items: center;
+      padding: 15px 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-button:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-button-svg {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    .footer-button span {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 600px) {
+      .footer-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</body>
+
+</html>
