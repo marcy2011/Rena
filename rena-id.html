@@ -712,17 +712,10 @@
 
     @media screen and (max-width: 768px) {
       .floating-navbar {
-        width: calc(95%);
-        padding: 12px 15px;
+        width: 95%;
+        padding: 12px 20px;
         top: 20px;
         justify-content: space-between;
-        max-width: none;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .container {
-        padding: 0 10px;
       }
 
       .profile-menu-container {
@@ -730,13 +723,19 @@
         flex-grow: 1;
         display: flex;
         justify-content: flex-start;
+        margin-left: -7px;
       }
 
       .navbar-logo {
         order: 2;
+        position: static;
+        left: auto;
+        transform: none;
         flex-shrink: 0;
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-grow: 0;
       }
 
       .navbar-nav {
@@ -748,63 +747,26 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        margin-left: 0;
         flex-grow: 1;
         justify-content: flex-end;
       }
 
       .rena-text {
-        font-size: 1.5em;
+        font-size: 1.6em;
+        letter-spacing: 1px;
       }
 
-      .hero {
-        margin-top: 100px;
-        padding: 60px 20px;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .cta-row {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin: 60px 0;
-      }
-
-      .content-section {
-        margin: 60px 0;
-        padding: 30px 20px;
+      .menu-icon {
+        width: 28px;
+        height: 28px;
+        transform: translateY(-1px) scaleX(-1);
       }
 
       .profile-menu {
         left: 0 !important;
         right: auto !important;
         transform: none !important;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .floating-navbar {
-        padding: 10px 16px;
-      }
-
-      .rena-text {
-        font-size: 1.3em;
-      }
-
-      .hero {
-        padding: 40px 15px;
       }
     }
 
@@ -836,14 +798,38 @@
       }
     }
 
+    @media screen and (max-width: 480px) {
+      .floating-navbar {
+        padding: 8px 16px;
+      }
+
+      .rena-text {
+        font-size: 1.4em;
+      }
+
+      .menu-icon {
+        width: 24px;
+        height: 24px;
+      }
+      
+      h1 {
+        font-size: 45px;
+      }
+    }
+
     @media (max-width: 480px) {
       .btn.btn-ghost span {
-        font-size: 14.8px;
+        font-size: 16px;
       }
 
       .btn.btn-ghost svg {
-        width: 18px;
-        height: 18px;
+        width: 30px;
+        height: 30px;
+      }
+      
+      .btn-ghost {
+        width: 300px;
+        height: 60px;
       }
     }
 
