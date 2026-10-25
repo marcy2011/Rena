@@ -516,7 +516,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
       gap: 30px;
       margin: 80px 0;
     }
@@ -616,7 +616,7 @@
     }
 
     .content-section li {
-      margin-bottom: 20px;
+      margin-bottom: 0;
       padding: 16px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
@@ -628,6 +628,67 @@
     .content-section strong {
       color: #10B981;
       font-weight: 600;
+    }
+
+    .content-section .grid.in-section {
+      margin: 32px 0 8px;
+    }
+
+    .content-section .grid.in-section .card {
+      text-align: left;
+    }
+
+    .content-section .grid.in-section .card .icon {
+      margin: 0 0 20px;
+    }
+
+    .method-list li {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .method-list .method-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .steps-list {
+      counter-reset: step;
+    }
+
+    .steps-list li {
+      position: relative;
+      padding: 0 0 0 52px;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .steps-list li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #10B981, #0F766E);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .support-link {
@@ -711,6 +772,14 @@
     }
 
     @media screen and (max-width: 768px) {
+      .content-section {
+        padding: 24px 20px;
+      }
+
+      .content-section .grid.in-section .card {
+        padding: 24px;
+      }
+
       .floating-navbar {
         width: 95%;
         padding: 12px 20px;
@@ -811,7 +880,7 @@
         width: 24px;
         height: 24px;
       }
-      
+
       h1 {
         font-size: 45px;
       }
@@ -826,7 +895,7 @@
         width: 30px;
         height: 30px;
       }
-      
+
       .btn-ghost {
         width: 300px;
         height: 60px;
@@ -847,9 +916,9 @@
       <div id="profile-button">
       </div>
       <div class="profile-menu" id="profile-menu">
-        <a href="account.php" class="profile-menu-item">
+        <a href="https://rena.altervista.org/login.php" class="profile-menu-item" id="account-menu-link">
           <i class="fas fa-user"></i>
-          <span data-translate-it="Il mio account" data-translate-en="My Account">Il mio account</span>
+          <span id="account-menu-label" data-translate-it="Accedi" data-translate-en="Login">Accedi</span>
         </a>
         <div class="profile-menu-divider"></div>
         <div class="profile-menu-item" style="pointer-events: none; opacity: 0.8;">
@@ -947,6 +1016,54 @@
     </div>
   </nav>
 
+  <div id="custom-menu">
+    <ul>
+      <li><a href="https://rena.altervista.org">
+          <img src="https://gcsapp.altervista.org/homebanner.png" alt="Home" width="20">
+          <span>Home</span>
+        </a></li>
+      <li><a href="https://rena.altervista.org/privacy-policy.html" class="has-svg">
+          <svg class="custom-menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4.32698 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Privacy Policy</span>
+        </a></li>
+      <li><a href="https://rena.altervista.org/chi-siamo.html" class="has-svg">
+          <svg class="custom-menu-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" fill="#ffffff" stroke="#ffffff">
+            <g>
+              <path
+                d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z">
+              </path>
+              <path
+                d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z">
+              </path>
+            </g>
+          </svg>
+          <span data-translate-it="Chi Siamo" data-translate-en="About Us">Chi Siamo</span>
+        </a></li>
+      <li><a href="https://rena.altervista.org/news.php" class="has-svg">
+          <svg class="custom-menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            stroke="#ffffff">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M5 21H17C19.2091 21 21 19.2091 21 17V5C21 3.89543 20.1046 3 19 3H9C7.89543 3 7 3.89543 7 5V18C7 19.6569 6.65685 21 5 21C3.61929 21 3 19.8807 3 18.5V10Z"
+                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="12" cy="8" r="1" stroke="#ffffff" stroke-width="2" stroke-linecap="round">
+              </circle>
+              <path d="M11 14H17" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M11 17H14" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+            </g>
+          </svg>
+          <span>News</span>
+        </a></li>
+    </ul>
+  </div>
+
   <main>
     <div class="container">
       <section class="hero" id="top">
@@ -958,10 +1075,6 @@
             </svg>
           </a>
           <img src="idlogo.png" alt="Rena ID Logo" class="hero-logo">
-          <div class="eyebrow">
-            <span class="dot"></span>
-            <span data-translate-it="Identità Unificata" data-translate-en="Unified Identity">Unified Identity</span>
-          </div>
           <h1 data-translate-it="Presentiamo Rena ID" data-translate-en="Introducing Rena ID">Introducing Rena ID</h1>
           <p class="hero-subtitle"
             data-translate-it="Un unico accesso sicuro per l'intero ecosistema Rena. Veloce, personalizzato e studiato per proteggere i tuoi dati."
@@ -977,7 +1090,9 @@
             </a>
           </div>
           <div class="badges">
-            <span class="badge"><i class="fa-solid fa-lock"></i> MFA</span>
+            <span class="badge"><i class="fa-solid fa-lock"></i> 2FA</span>
+            <span class="badge"><i class="fa-solid fa-key"></i> Passkey</span>
+            <span class="badge"><i class="fa-solid fa-qrcode"></i> QR login</span>
             <span class="badge"><i class="fa-solid fa-bolt"></i> OAuth-ready</span>
             <span class="badge">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" width="16"
@@ -1013,9 +1128,9 @@
         <article class="card">
           <div class="icon"><i class="fa-solid fa-user-lock"></i></div>
           <h3 data-translate-it="Sicurezza Avanzata" data-translate-en="Enhanced Security">Enhanced Security</h3>
-          <p data-translate-it="Crittografia moderna e MFA per proteggere ciò che conta."
-            data-translate-en="Modern encryption and MFA to safeguard what matters.">
-            Modern encryption and MFA to safeguard what matters.
+          <p data-translate-it="Crittografia moderna e verifica in 2 fattori per proteggere ciò che conta."
+            data-translate-en="Modern encryption and two-factor verification to safeguard what matters.">
+            Modern encryption and two-factor verification to safeguard what matters.
           </p>
         </article>
         <article class="card">
@@ -1026,6 +1141,55 @@
             Decide what to share and manage permissions with ease.
           </p>
         </article>
+      </section>
+
+      <section class="content-section" id="funzioni">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z" stroke="#ffffff"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2 data-translate-it="Funzioni di Rena ID" data-translate-en="Rena ID Features">Rena ID Features</h2>
+        </div>
+        <p data-translate-it="Rena ID ti offre più modi per proteggere il tuo account e più controllo su dove e come lo usi."
+          data-translate-en="Rena ID gives you more ways to protect your account and more control over where and how you use it.">
+          Rena ID ti offre più modi per proteggere il tuo account e più controllo su dove e come lo usi.
+        </p>
+
+        <div class="grid in-section">
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-user-shield"></i></div>
+            <h3 data-translate-it="Verifica in 2 fattori" data-translate-en="Two-factor verification">Two-factor verification</h3>
+            <p data-translate-it="Proteggi il login con app authenticator, codice via email o passkey."
+              data-translate-en="Protect your sign-in with an authenticator app, an email code or a passkey.">
+              Protect your sign-in with an authenticator app, an email code or a passkey.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-desktop"></i></div>
+            <h3 data-translate-it="Gestione dispositivi" data-translate-en="Device management">Device management</h3>
+            <p data-translate-it="Vedi da quali dispositivi hai effettuato l'accesso e disconnettili in qualsiasi momento."
+              data-translate-en="See which devices you're signed in on and sign them out at any time.">
+              See which devices you're signed in on and sign them out at any time.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-plug"></i></div>
+            <h3 data-translate-it="Servizi collegati" data-translate-en="Connected services">Connected services</h3>
+            <p data-translate-it="Gestisci i servizi Rena e di terze parti che accedono al tuo Rena ID."
+              data-translate-en="Manage the Rena and third-party services that access your Rena ID.">
+              Manage the Rena and third-party services that access your Rena ID.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon"><i class="fa-solid fa-qrcode"></i></div>
+            <h3 data-translate-it="Login con QR code" data-translate-en="QR code sign-in">QR code sign-in</h3>
+            <p data-translate-it="Accedi dal computer scansionando un QR code con il telefono già connesso."
+              data-translate-en="Sign in on your computer by scanning a QR code with your already signed-in phone.">
+              Sign in on your computer by scanning a QR code with your already signed-in phone.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section class="content-section">
@@ -1147,6 +1311,121 @@
               d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
               stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+          <h2 data-translate-it="Verifica in 2 fattori" data-translate-en="Two-factor verification">
+            Two-factor verification
+          </h2>
+        </div>
+        <p data-translate-it="Oltre alla password, puoi richiedere un secondo passaggio di verifica. Scegli il metodo che preferisci:"
+          data-translate-en="On top of your password, you can require a second verification step. Choose the method you prefer:">
+          On top of your password, you can require a second verification step. Choose the method you prefer:
+        </p>
+        <ul class="method-list">
+          <li>
+            <div class="method-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/><path d="M9.5 10l2 2 3.5-4"/></svg></div>
+            <div>
+              <strong data-translate-it="App authenticator" data-translate-en="Authenticator app">Authenticator app</strong>:
+              <span
+                data-translate-it="Usa un'app come Microsoft Authenticator o Google Authenticator per generare codici temporanei."
+                data-translate-en="Use an app like Microsoft Authenticator or Google Authenticator to generate temporary codes.">
+                Use an app like Microsoft Authenticator or Google Authenticator to generate temporary codes.
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="method-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <div>
+              <strong data-translate-it="Codice via email" data-translate-en="Email code">Email code</strong>:
+              <span
+                data-translate-it="Ricevi un codice monouso all'indirizzo email registrato e inseriscilo per confermare l'accesso."
+                data-translate-en="Receive a one-time code at your registered email address and enter it to confirm your sign-in.">
+                Receive a one-time code at your registered email address and enter it to confirm your sign-in.
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="method-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9"/><path d="M16 7l3 3"/><path d="M14 9l2 2"/></svg></div>
+            <div>
+              <strong data-translate-it="Passkey" data-translate-en="Passkey">Passkey</strong>:
+              <span
+                data-translate-it="Conferma l'accesso con Touch ID, Face ID, Windows Hello o una chiave di sicurezza: veloce e resistente al phishing."
+                data-translate-en="Confirm your sign-in with Touch ID, Face ID, Windows Hello or a security key: fast and phishing-resistant.">
+                Confirm your sign-in with Touch ID, Face ID, Windows Hello or a security key: fast and
+                phishing-resistant.
+              </span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="18" height="12" rx="2" stroke="#ffffff" stroke-width="2" />
+            <path d="M8 20H16M12 16V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <h2 data-translate-it="Dispositivi e servizi sotto controllo" data-translate-en="Devices and services under your control">
+            Devices and services under your control
+          </h2>
+        </div>
+        <ul>
+          <li>
+            <strong data-translate-it="Gestione dei dispositivi" data-translate-en="Device management">Device management</strong>:
+            <span
+              data-translate-it="Consulta l'elenco dei dispositivi su cui hai effettuato l'accesso al tuo Rena ID. Se ne noti uno che non riconosci, puoi disconnetterlo subito."
+              data-translate-en="Review the list of devices where you're signed in to your Rena ID. If you spot one you don't recognize, you can sign it out right away.">
+              Review the list of devices where you're signed in to your Rena ID. If you spot one you don't recognize,
+              you can sign it out right away.
+            </span>
+          </li>
+          <li>
+            <strong data-translate-it="Gestione dei servizi" data-translate-en="Service management">Service management</strong>:
+            <span
+              data-translate-it="Controlla quali servizi Rena e quali servizi di terze parti hanno accesso al tuo Rena ID e revoca i permessi quando vuoi."
+              data-translate-en="Check which Rena services and third-party services have access to your Rena ID, and revoke permissions whenever you want.">
+              Check which Rena services and third-party services have access to your Rena ID, and revoke permissions
+              whenever you want.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h3M20 14v6M14 18v2h3" stroke="#ffffff"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2 data-translate-it="Accedi dal computer con il QR code" data-translate-en="Sign in on your computer with a QR code">
+            Sign in on your computer with a QR code
+          </h2>
+        </div>
+        <p data-translate-it="Hai già effettuato l'accesso sul telefono? Non serve digitare nulla sul computer:"
+          data-translate-en="Already signed in on your phone? No need to type anything on your computer:">
+          Already signed in on your phone? No need to type anything on your computer:
+        </p>
+        <ul class="steps-list">
+          <li data-translate-it="Apri la pagina di login di Rena ID sul computer: comparirà un QR code."
+            data-translate-en="Open the Rena ID login page on your computer: a QR code will appear.">
+            Open the Rena ID login page on your computer: a QR code will appear.
+          </li>
+          <li data-translate-it="Dal telefono già connesso, scansiona il QR code."
+            data-translate-en="From your already signed-in phone, scan the QR code.">
+            From your already signed-in phone, scan the QR code.
+          </li>
+          <li data-translate-it="Conferma sul telefono: il computer accede automaticamente al tuo Rena ID."
+            data-translate-en="Confirm on your phone: your computer signs in to your Rena ID automatically.">
+            Confirm on your phone: your computer signs in to your Rena ID automatically.
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <div class="section-header">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
           <h2 data-translate-it="La Sicurezza di Rena ID" data-translate-en="Rena ID Security">
             Rena ID Security
           </h2>
@@ -1161,6 +1440,11 @@
           Furthermore, we offer a secure password recovery process. If you forget your password, you can easily recover
           it through the verification of a temporary code sent to your registered email address, ensuring that only you
           can access your account.
+        </p>
+        <p data-translate-it="Per una protezione ancora maggiore, attiva la verifica in 2 fattori con app authenticator, codice via email o passkey, e tieni sotto controllo dispositivi e servizi collegati dalle impostazioni del tuo account."
+          data-translate-en="For even stronger protection, enable two-factor verification with an authenticator app, an email code or a passkey, and keep an eye on your connected devices and services from your account settings.">
+          For even stronger protection, enable two-factor verification with an authenticator app, an email code or a
+          passkey, and keep an eye on your connected devices and services from your account settings.
         </p>
       </section>
 
@@ -1226,7 +1510,7 @@
           and services with a few simple steps.
         </p>
         <div class="cta-row">
-          <a class="btn btn-ghost" href="https://rena.altervista.org/docs/rena-id.html">
+          <a class="btn btn-ghost" href="https://rena.altervista.org/docs-renaid-api.html">
             <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"
               stroke="#ffffff" style="vertical-align:middle; margin-right:4px;">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1291,37 +1575,33 @@
     }
 
     function checkLoginStatus() {
-      fetch('account.php?nocache=' + new Date().getTime(), {
+      fetch('https://rena.altervista.org/get_user_data?nocache=' + Date.now(), {
         method: 'GET',
-        headers: {
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache'
-        },
-        cache: 'no-cache'
+        credentials: 'include',
+        cache: 'no-store'
       })
-        .then(response => response.text())
-        .then(text => {
-          try {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-
-            const username = doc.querySelector('.user-info h2')?.textContent.replace('Benvenuto, ', '').replace('Welcome, ', '').replace('!', '').trim();
-            const profilePhoto = doc.querySelector('.profile-photo')?.getAttribute('src');
-
-            updateProfileUI({
-              logged_in: true,
-              username: username,
-              profile_photo: profilePhoto
-            });
-          } catch (error) {
-            console.error('Errore nel parsing della risposta:', error);
-            showLoginUI();
-          }
-        })
+        .then(response => response.json())
+        .then(data => updateProfileUI(data))
         .catch(error => {
           console.error('Errore nel controllo login:', error);
-          showLoginUI();
+          updateProfileUI({ logged_in: false });
         });
+    }
+
+    function setAccountMenuItem(loggedIn) {
+      const link = document.getElementById('account-menu-link');
+      const label = document.getElementById('account-menu-label');
+      if (link) {
+        link.href = loggedIn
+          ? 'https://rena.altervista.org/account.php'
+          : 'https://rena.altervista.org/login.php';
+      }
+      if (label) {
+        label.setAttribute('data-translate-it', loggedIn ? 'Il mio account' : 'Accedi');
+        label.setAttribute('data-translate-en', loggedIn ? 'My Account' : 'Login');
+        const currentLang = localStorage.getItem('preferredLanguage') || 'it';
+        label.textContent = label.getAttribute('data-translate-' + (currentLang === 'en' ? 'en' : 'it'));
+      }
     }
 
     function updateProfileUI(data) {
@@ -1358,17 +1638,7 @@
           profileButton.appendChild(defaultAvatarDiv);
         }
 
-        const accountMenuItemSpan = document.querySelector('.profile-menu-item span');
-        if (accountMenuItemSpan) {
-          accountMenuItemSpan.setAttribute('data-translate-it', 'Il mio account');
-          accountMenuItemSpan.setAttribute('data-translate-en', 'My Account');
-          const currentLang = localStorage.getItem('preferredLanguage') || 'it';
-          if (currentLang === 'it') {
-            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-it');
-          } else {
-            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-en');
-          }
-        }
+        setAccountMenuItem(true);
 
       } else {
         const defaultAvatarDiv = document.createElement('div');
@@ -1376,17 +1646,7 @@
         defaultAvatarDiv.innerHTML = `<i class="fas fa-user"></i>`;
         profileButton.appendChild(defaultAvatarDiv);
 
-        const accountMenuItemSpan = document.querySelector('.profile-menu-item span');
-        if (accountMenuItemSpan) {
-          accountMenuItemSpan.setAttribute('data-translate-it', 'Accedi');
-          accountMenuItemSpan.setAttribute('data-translate-en', 'Login');
-          const currentLang = localStorage.getItem('preferredLanguage') || 'it';
-          if (currentLang === 'it') {
-            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-it');
-          } else {
-            accountMenuItemSpan.textContent = accountMenuItemSpan.getAttribute('data-translate-en');
-          }
-        }
+        setAccountMenuItem(false);
       }
     }
 
@@ -1595,6 +1855,40 @@
       }
     }
   </style>
+    <style>
+        *:focus {
+            outline: none;
+        }
+
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: none;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body,
+        p,
+        h1,
+        h2,
+        h3,
+        a,
+        span {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
 </body>
 
 </html>
